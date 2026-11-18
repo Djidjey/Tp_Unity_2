@@ -6,17 +6,22 @@ public class UI_Buttons : MonoBehaviour
 {
     [SerializeField] private GameObject PauseScreen;
     [SerializeField] private GameObject MenuScreen;
-    private string CurrentSceneName;
+    private int ReloadAmount = 1;
 
 
     private void RestartSetup()
     {
-        SceneManager.CreateScene("ReloadedScene");
-        SceneManager.GetSceneByName("ReloadedScene").Equals(SceneManager.GetActiveScene());
-        SceneManager.UnloadSceneAsync("ReloadedScene");
+        SceneManager.CreateScene("TemplateScene");
+        SceneManager.GetSceneByName("TemplateScene").Equals(SceneManager.GetActiveScene());
+        SceneManager.UnloadSceneAsync("TemplateScene");
     }
 
 
+    public void PlayButton()
+    {
+        Time.timeScale = 1.0f;
+        MenuScreen.SetActive(false);
+    }
     public void QuitButton()
     {
         Application.Quit();
@@ -36,10 +41,10 @@ public class UI_Buttons : MonoBehaviour
 
     public void ReplayButton()
     {
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
-        SceneManager.LoadScene("ReloadedScene");
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("ReloadedScene"));
-        CurrentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.CreateScene("ReloadedScene" + ReloadAmount.ToString()).Equals(SceneManager.GetSceneByName("TemplateScene"));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("ReloadedScene" + ReloadAmount.ToString()));
+        ReloadAmount += 1;
+
     }
 
 
