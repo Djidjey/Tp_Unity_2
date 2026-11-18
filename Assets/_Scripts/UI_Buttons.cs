@@ -9,13 +9,6 @@ public class UI_Buttons : MonoBehaviour
     private int ReloadAmount = 1;
 
 
-    private void RestartSetup()
-    {
-        SceneManager.CreateScene("TemplateScene");
-        SceneManager.GetSceneByName("TemplateScene").Equals(SceneManager.GetActiveScene());
-        SceneManager.UnloadSceneAsync("TemplateScene");
-    }
-
 
     public void PlayButton()
     {
@@ -41,10 +34,7 @@ public class UI_Buttons : MonoBehaviour
 
     public void ReplayButton()
     {
-        SceneManager.CreateScene("ReloadedScene" + ReloadAmount.ToString()).Equals(SceneManager.GetSceneByName("TemplateScene"));
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("ReloadedScene" + ReloadAmount.ToString()));
-        ReloadAmount += 1;
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 
@@ -55,7 +45,7 @@ public class UI_Buttons : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        RestartSetup();
+        
     }
 
     // Update is called once per frame
