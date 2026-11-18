@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sapeur
   m_EditorClassIdentifier: Assembly-CSharp::_ENemy_Data
   _Enemy_Name: Sapeur
-  _speed: 3.5
+  _speed: 5
   _damage: 25
   _Initialheath: 5
   _fireRate: 0

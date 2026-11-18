@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bombardier
   m_EditorClassIdentifier: Assembly-CSharp::_ENemy_Data
   _Enemy_Name: bombardier
-  _speed: 1.5
+  _speed: 5
   _damage: 5
   _Initialheath: 10
   _fireRate: 2

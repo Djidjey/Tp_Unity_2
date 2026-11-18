@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 7404893894778154221}
   - component: {fileID: -3253454518975161804}
   - component: {fileID: 2964447321891138122}
+  - component: {fileID: 1273021615772867215}
   m_Layer: 0
-  m_Name: Sapeur
+  m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,9 +105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b79c3c71789404296b5dabd36e271b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Enemy
-  speed: 0.1
-  Target: {fileID: 6402116615126691279, guid: 7f19c91be971ba240836057b9a183b4e, type: 3}
-  _EnmData: {fileID: 11400000, guid: bdce3a9c3bc64c24e8f1051dce6c62e9, type: 2}
+  _speed: 0
+  _Target: {fileID: 6402116615126691279, guid: 7f19c91be971ba240836057b9a183b4e, type: 3}
+  _EnmData: {fileID: 11400000, guid: bb051bb28b600934f9cc5c90d341944d, type: 2}
+  _Bulletspeed: 0
 --- !u!65 &2964447321891138122
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -122,9 +124,36 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1273021615772867215
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6422569518124272410}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

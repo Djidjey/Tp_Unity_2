@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Trash_Mob
   m_EditorClassIdentifier: Assembly-CSharp::_ENemy_Data
   _Enemy_Name: Trash mob
-  _speed: 2.5
+  _speed: 5
   _damage: 2
   _Initialheath: 1
   _fireRate: 1

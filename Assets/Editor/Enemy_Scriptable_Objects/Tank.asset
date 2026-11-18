@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tank
   m_EditorClassIdentifier: Assembly-CSharp::_ENemy_Data
   _Enemy_Name: Tank
-  _speed: 1
+  _speed: 5
   _damage: 7
   _Initialheath: 25
   _fireRate: 4
