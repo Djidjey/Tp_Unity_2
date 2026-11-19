@@ -1,5 +1,71 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6041348808497571250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4371216535107764790}
+  - component: {fileID: 117615954140723493}
+  - component: {fileID: 4883971449788787075}
+  m_Layer: 3
+  m_Name: Aerien_Range
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4371216535107764790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6041348808497571250}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4281463244162794068}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &117615954140723493
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6041348808497571250}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4883971449788787075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6041348808497571250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3a567e1b1b62b419813ea5694a1d6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_ENM_Damager
 --- !u!1 &6422569518124272410
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,7 +81,7 @@ GameObject:
   - component: {fileID: 2964447321891138122}
   - component: {fileID: 6782350831201185928}
   - component: {fileID: -9079014760338894506}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Aerien
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +100,8 @@ Transform:
   m_LocalPosition: {x: 1.88225, y: -0, z: -0.2849}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4371216535107764790}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4513809540063776073
@@ -106,10 +173,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b79c3c71789404296b5dabd36e271b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Enemy
-  _speed: 0
   _Target: {fileID: 6402116615126691279, guid: 7f19c91be971ba240836057b9a183b4e, type: 3}
   _EnmData: {fileID: 11400000, guid: a244df606db96db43bd66b9e52eed41c, type: 2}
   _Bulletspeed: 0
+  _FireRate: 1
+  _BulletPrefab: {fileID: 1796637597947336972, guid: d7a093b859ea7ea499df4b6b5bde3498, type: 3}
+  _canMove: 1
 --- !u!65 &2964447321891138122
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -125,7 +194,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -143,7 +212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac1123bb548ece4eb04187896fdcfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Enemy_Aerien
-  _enemy: {fileID: 6422569518124272410}
   FlyDistance: 2.5
 --- !u!54 &-9079014760338894506
 Rigidbody:

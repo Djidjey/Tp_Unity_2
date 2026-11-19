@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class _Enemy : MonoBehaviour
 {
-    [SerializeField] private float _speed;
     [SerializeField] private GameObject _Target;
     [SerializeField] private _ENemy_Data _EnmData;
     public float _Bulletspeed;
+    public float _FireRate;
+    public GameObject _BulletPrefab;
+    [HideInInspector] public bool _canMove = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,8 +17,8 @@ public class _Enemy : MonoBehaviour
     // Update is called once per frame
     public void FixedUpdate()
     {
-        Enm_Move();
-
+        if (_canMove)
+            Enm_Move();
     }
     public void OnDeath()
     {
@@ -41,7 +43,7 @@ public class _Enemy : MonoBehaviour
 
     public void Stop_Enm_Move()
     {
-        transform.position = Vector3.zero;
+        _canMove = false;
     }
 
 }

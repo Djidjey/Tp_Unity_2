@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3253454518975161804}
   - component: {fileID: 2964447321891138122}
   - component: {fileID: 5899616337386890817}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bombardier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
