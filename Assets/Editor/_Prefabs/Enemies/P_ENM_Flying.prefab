@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4706187353672402712
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1786378126976511204, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+      propertyPath: m_Name
+      value: FlyingEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761681848090278228, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.05947
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761681848090278228, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761681848090278228, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.06185
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761681848090278228, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761681848090278228, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761681848090278228, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761681848090278228, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761681848090278228, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761681848090278228, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5761681848090278228, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7503937626210368195, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+      propertyPath: _speed
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3728406008340951126, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1786378126976511204, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 7540580793509279992}
+  m_SourcePrefab: {fileID: 100100000, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+--- !u!114 &4075547489915733854 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8773289906555174982, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+  m_PrefabInstance: {fileID: 4706187353672402712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &6450774279953984508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1786378126976511204, guid: d4b3e24d30f51b640a43333b4d69a4dc, type: 3}
+  m_PrefabInstance: {fileID: 4706187353672402712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7540580793509279992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6450774279953984508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf913963edf91e43abc6c28c18cb00d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GS.FlyingEnemy
+  _enemyData: {fileID: 11400000, guid: eb8a590bc57cbb64b90dfe819868500b, type: 2}
+  _healthBarImage: {fileID: 4075547489915733854}
+  _yOffset: 5
