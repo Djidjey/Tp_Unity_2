@@ -26,28 +26,20 @@ namespace GS
         private List<Enemy> _targetedEnemies;
 
         private EnemyManager _enemyManager;
-        private CoinCounter _coinCounter;
+
 
         private void Start()
         {
             _detectedEnemies = new List<Enemy>();
             _enemyManager = FindAnyObjectByType<EnemyManager>();
-            _coinCounter = FindAnyObjectByType<CoinCounter>();
-            if ( _towerData.Cost <= _coinCounter.currentCoins)
-            {
-                _coinCounter.IncreaseCoins(_towerData.Cost * -1);
-                Debug.Log("salut toi");
-            }
-            else
-            {
-                Destroy(gameObject);
-                Debug.Log("La tour n'a pas pu être crée : Fonds suffisant");
-                Debug.Log("Vos fonds : " + _coinCounter.currentCoins);
-                Debug.Log("Prix de la tour : " + _towerData.Cost);
-                Debug.Log("Fonction : " + _towerData.Cost + " <= " + _coinCounter.currentCoins);
-            }
+
+            // ---------------------------------------- //
                 
         }
+
+        public TowerData GetTowerData() { return _towerData; } // Fonction 
+        public TowerData TowerData => _towerData; // Property
+
 
         private void Update()
         {
