@@ -6,7 +6,6 @@ public class UI_Buttons : MonoBehaviour
 {
     [SerializeField] private GameObject PauseScreen;
     [SerializeField] private GameObject MenuScreen;
-    private int ReloadAmount = 1;
 
 
 
