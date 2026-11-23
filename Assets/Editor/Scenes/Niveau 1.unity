@@ -2001,7 +2001,9 @@ MonoBehaviour:
     - SpawnPoints: {fileID: 855974079}
       enemies:
       - prefab: {fileID: 6422569518124272410, guid: 185b05c8f061fcc49b03a89481343b5c, type: 3}
-        spawnCount: 2
+        spawnCount: 193
+      - prefab: {fileID: 6422569518124272410, guid: 185b05c8f061fcc49b03a89481343b5c, type: 3}
+        spawnCount: 193
     - SpawnPoints: {fileID: 1179404423}
       enemies: []
     - SpawnPoints: {fileID: 1745965096}

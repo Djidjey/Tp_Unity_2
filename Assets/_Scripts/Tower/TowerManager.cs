@@ -34,7 +34,6 @@ namespace GS
             if (tower.TowerData.Cost <= _coinCounter.currentCoins)
             {
                 _coinCounter.IncreaseCoins(tower.TowerData.Cost * -1);
-                Debug.Log("salut toi");
 
                 Instantiate(prefab, buildSpot.transform.position, Quaternion.identity);
 
