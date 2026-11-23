@@ -48,7 +48,7 @@ MonoBehaviour:
   _towerData: {fileID: 11400000, guid: 7e91be26449dbcf47886f6463dbbc37b, type: 2}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
 --- !u!1 &8957146572784465055
 GameObject:
   m_ObjectHideFlags: 0
