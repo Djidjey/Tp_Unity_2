@@ -1,3 +1,7 @@
+using GS;
+using NUnit.Framework;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -17,9 +21,11 @@ public class _Enemy : MonoBehaviour
     [SerializeField] private int Health;
 
     [SerializeField] private int UpHealth ;
+    private Wave_Manager Wave_Manager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Wave_Manager = FindAnyObjectByType<Wave_Manager>();
         _HealthBar = GetComponentInChildren<Slider>();
         Health = _EnmData.InitialHealth;
         _HealthBar.maxValue = _EnmData.InitialHealth;
@@ -31,31 +37,26 @@ public class _Enemy : MonoBehaviour
     {
         if (_canMove)
             Enm_Move();
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            {
-                Health -= 5;
-                UpdateEnmHealthBar();
-                print(Health);
-            }
-        }
+
     }
     public void OnDeath()
     {
+        
         Destroy(gameObject);
+
     }
     
     public void Enm_Move()
     {
         Vector3 TargetPos = _Target.transform.position;
         TargetPos.y = transform.position.y;
+        
+        
 
         transform.position = Vector3.MoveTowards(transform.position, TargetPos, _EnmData.Speed * Time.deltaTime);
-        transform.rotation = _Target.transform.rotation;
-
+        transform.LookAt(_Target.transform);
         if (transform.position.z == TargetPos.z && transform.position.x == TargetPos.x)
         {
-            print("dead");
             OnDeath();
         }
        

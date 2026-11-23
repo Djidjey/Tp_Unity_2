@@ -30,6 +30,7 @@ public class PathWave
         [SerializeField] private float timeBetweenWave;
         [SerializeField] private float Time_Betweens_enemies;
         private const int PathCount = 4;
+        [HideInInspector] public static List<GameObject> _EnemyList = new List<GameObject>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,7 +40,7 @@ public class PathWave
         }
     private void OnValidate()
     {
-        /*if (waves == null)return;
+        if (waves == null)return;
 
         foreach (Wave wave in waves)
         {
@@ -51,7 +52,7 @@ public class PathWave
             }
             while (wave.PathWaves.Count > PathCount)
                 wave.PathWaves.RemoveAt(wave.PathWaves.Count - 1);
-        }*/
+        }
 
     }
 
@@ -89,11 +90,15 @@ public class PathWave
         {
             for (int i = 0; i < spawn.spawnCount; i++)
             {
-                Instantiate(spawn.prefab, path.SpawnPoints.position, Quaternion.identity);
+                GameObject enemy = Instantiate(spawn.prefab, path.SpawnPoints.position, Quaternion.identity);
+                print("okk" + enemy.name);
+                _EnemyList.Add(enemy);
                 spawned++;
 
-                if (spawned < total)
+                if (spawned < total) 
+                { 
                     yield return new WaitForSeconds(Time_Betweens_enemies);
+                }
             }
         }
         OnFinished?.Invoke();
