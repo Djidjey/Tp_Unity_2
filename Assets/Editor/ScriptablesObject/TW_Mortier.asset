@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d3972098cb7be46863e9026f3d7b46, type: 3}
   m_Name: TW_Mortier
   m_EditorClassIdentifier: Assembly-CSharp::GS.TowerData
-  _cost: 50
+  _cost: 3
   _range: 10
   _ratePerSeconds: 1
   _towerTargetingMode: 1

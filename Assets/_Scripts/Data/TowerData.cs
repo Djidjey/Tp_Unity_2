@@ -16,7 +16,6 @@ namespace GS
         [SerializeField] private float _ratePerSeconds;
         [SerializeField] private TowerTargetingMode _towerTargetingMode;
         [SerializeField] private int _damage;
-
         public int Cost => _cost;
         public float Range => _range;
         public float RatePerSeconds => _ratePerSeconds;
