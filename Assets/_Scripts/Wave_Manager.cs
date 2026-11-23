@@ -39,7 +39,7 @@ public class PathWave
         }
     private void OnValidate()
     {
-        if (waves == null)return;
+        /*if (waves == null)return;
 
         foreach (Wave wave in waves)
         {
@@ -51,7 +51,7 @@ public class PathWave
             }
             while (wave.PathWaves.Count > PathCount)
                 wave.PathWaves.RemoveAt(wave.PathWaves.Count - 1);
-        }
+        }*/
 
     }
 
@@ -75,9 +75,9 @@ public class PathWave
             
             
                 yield return new WaitUntil(() => PathRunning == 0);
-
+                
                 yield return new WaitForSeconds(timeBetweenWave);
-        }
+        }       
     }
     IEnumerator RunPath(PathWave path, Action OnFinished)
     {

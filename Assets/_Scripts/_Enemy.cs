@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using UnityEngine.Windows;
 
 public class _Enemy : MonoBehaviour
 {
@@ -8,10 +11,19 @@ public class _Enemy : MonoBehaviour
     public float _FireRate;
     public GameObject _BulletPrefab;
     [HideInInspector] public bool _canMove = true;
+
+    private Slider _HealthBar;
+
+    [SerializeField] private int Health;
+
+    [SerializeField] private int UpHealth ;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        _HealthBar = GetComponentInChildren<Slider>();
+        Health = _EnmData.InitialHealth;
+        _HealthBar.maxValue = _EnmData.InitialHealth;
+        _HealthBar.value = Health;
     }
 
     // Update is called once per frame
@@ -19,6 +31,14 @@ public class _Enemy : MonoBehaviour
     {
         if (_canMove)
             Enm_Move();
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            {
+                Health -= 5;
+                UpdateEnmHealthBar();
+                print(Health);
+            }
+        }
     }
     public void OnDeath()
     {
@@ -45,5 +65,15 @@ public class _Enemy : MonoBehaviour
     {
         _canMove = false;
     }
+
+    public void UpEnemyHealth()
+    {
+         Health += UpHealth;
+    }
+
+    public void UpdateEnmHealthBar()
+    {
+        _HealthBar.value = Health;
+    }    
 
 }
