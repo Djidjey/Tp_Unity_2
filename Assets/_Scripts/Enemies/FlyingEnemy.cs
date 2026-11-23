@@ -3,7 +3,7 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace GS
 {
-    public class FlyingEnemy : Enemy
+    public class FlyingEnemy : _Enemy
     {
         [SerializeField] private float _yOffset;
 

@@ -72,6 +72,23 @@ public class _Enemy : MonoBehaviour
          Health += UpHealth;
     }
 
+    public void TakeDamage(int  damage)
+    {
+
+        Health -= damage;
+
+        Debug.Log("Damage received");
+        Debug.Log("Amount of damage : " + damage);
+        Debug.Log("Health remaininf : " + Health);
+
+        if (Health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+        UpdateEnmHealthBar();
+    }
+
     public void UpdateEnmHealthBar()
     {
         _HealthBar.value = Health;

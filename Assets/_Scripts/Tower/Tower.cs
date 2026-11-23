@@ -21,16 +21,16 @@ namespace GS
         private TowerState _currentState = TowerState.Idle;
         private float _timerAttack;
 
-        private List<Enemy> _allEnemies;
-        private List<Enemy> _detectedEnemies;
-        private List<Enemy> _targetedEnemies;
+        private List<_Enemy> _allEnemies;
+        private List<_Enemy> _detectedEnemies;
+        private List<_Enemy> _targetedEnemies;
 
         private EnemyManager _enemyManager;
-
+        private GameObject actualTargetedEnnemy;
 
         private void Start()
         {
-            _detectedEnemies = new List<Enemy>();
+            _detectedEnemies = new List<_Enemy>();
             _enemyManager = FindAnyObjectByType<EnemyManager>();
 
             // ---------------------------------------- //
@@ -41,10 +41,17 @@ namespace GS
         public TowerData TowerData => _towerData; // Property
 
 
+
+        // ====================================================== MAIN FUNCTIONS ======================================================
+
+
+
         private void Update()
         {
             _timerAttack += Time.deltaTime;
             
+            // Define tower current state 
+
             switch (_currentState)
             {
                 case TowerState.Idle:
@@ -54,60 +61,81 @@ namespace GS
                         _currentState = TowerState.Detecting;
                     }
                     break;
+
                 case TowerState.Detecting:
                     _detectedEnemies = DetectEnemies();
 
                     if (_detectedEnemies.Count > 0)
                     {
+
                         _currentState = TowerState.Targeting;
+
+                        // Rotate toward the ennemy
+                        //Quaternion targetRotation = Quaternion.LookRotation(actualTargetedEnnemy.transform.position - transform.position, Vector3.up);
+                        //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.5f);
                     }
-                    else
-                    {
-                        _currentState = TowerState.Idle;
-                    }
+
+                    else _currentState = TowerState.Idle;
+
                     break;
+
                 case TowerState.Targeting:
-                    _targetedEnemies = new List<Enemy>();
+                    _targetedEnemies = new List<_Enemy>();
                     _targetedEnemies = TargetEnemies(_detectedEnemies);
 
-                    if (_targetedEnemies.Count > 0)
-                    {
-                        _currentState = TowerState.Attacking;
-                    }
-                    else
-                    {
-                        _currentState = TowerState.Idle;
-                    }
+                    if (_targetedEnemies.Count > 0) _currentState = TowerState.Attacking;
+
+                    else _currentState = TowerState.Idle;
+
+
                     break;
+
                 case TowerState.Attacking:
                     Attack(_targetedEnemies);
                     _currentState = TowerState.Idle;
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        private void Attack(List<Enemy> targetedEnemies)
+
+
+        // ============================================================================================================================
+
+
+        // ====================================================== CUSTOM FUNCTIONS ====================================================
+
+
+
+        private void Attack(List<_Enemy> targetedEnemies)
         {
-            foreach (Enemy targetedEnemy in targetedEnemies)
+            foreach (_Enemy targetedEnemy in targetedEnemies)
             {
+                // if (targetedEnemy = null)
+                actualTargetedEnnemy = targetedEnemy.gameObject;
+
+
+                // Attack the ennemy
                 targetedEnemy.TakeDamage(_towerData.Damage);
             }
         }
 
-        private List<Enemy> TargetEnemies(List<Enemy> detectedEnemies)
-        {
-            if (detectedEnemies.Count == 0) return new List<Enemy>();
 
-            List<Enemy> targetedEnemies = new List<Enemy>();
+
+        private List<_Enemy> TargetEnemies(List<_Enemy> detectedEnemies)
+        {
+            if (detectedEnemies.Count == 0) return new List<_Enemy>();
+
+            List<_Enemy> targetedEnemies = new List<_Enemy>();
             
             switch (_towerData.TowerTargetingMode)
             {
                 case TowerTargetingMode.FirstOnPath:
                     break;
                 case TowerTargetingMode.ClosestOnPath:
-                    Enemy closestEnemy = detectedEnemies[0];
+                    _Enemy closestEnemy = detectedEnemies[0];
                     float shortestDistance = Vector3.Distance(transform.position, closestEnemy.transform.position);
 
                     for (int i = 1; i < detectedEnemies.Count; i++)
@@ -130,20 +158,34 @@ namespace GS
             return targetedEnemies;
         }
 
-        private List<Enemy> DetectEnemies()
+        private List<_Enemy> DetectEnemies()
+
+        // Find and target the enemies
+
         {
-            List<Enemy> enemies = new List<Enemy>();
+            List<_Enemy> enemies = new List<_Enemy>();
 
             foreach (Collider col in Physics.OverlapSphere(transform.position, _towerData.Range, _layerMask))
             {
-                if (col.TryGetComponent(out Enemy enemy))
+                if (col.TryGetComponent(out _Enemy enemy))
                 {
+                    Debug.Log("detected inside the loop");
                     enemies.Add(enemy);
                 }
             }
 
             return enemies;
         }
+
+
+
+        // ============================================================================================================================
+
+
+
+        // ===================================================== ON EVENT FUNCTIONS ===================================================
+
+
 
         private void OnDrawGizmosSelected()
         {
@@ -152,15 +194,22 @@ namespace GS
                 case TowerState.Idle:
                     Gizmos.color = Color.grey;
                     break;
+
                 case TowerState.Detecting:
+                    Debug.Log("Has detected something...");
                     Gizmos.color = Color.yellow;
                     break;
+
                 case TowerState.Targeting:
+                    Debug.Log("Has targeted something...");
                     Gizmos.color = Color.orange;
                     break;
+
                 case TowerState.Attacking:
+                    Debug.Log("Has attacked something...");
                     Gizmos.color = Color.red;
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -168,7 +217,7 @@ namespace GS
 
             if (_detectedEnemies != null && _currentState == TowerState.Detecting)
             {
-                foreach (Enemy detectedEnemy in _detectedEnemies)
+                foreach (_Enemy detectedEnemy in _detectedEnemies)
                 {
                     Gizmos.DrawLine(transform.position, detectedEnemy.transform.position);
                 }
@@ -176,12 +225,15 @@ namespace GS
 
             if (_targetedEnemies != null && _currentState == TowerState.Targeting)
             {
-                foreach (Enemy detectedEnemy in _targetedEnemies)
+                foreach (_Enemy detectedEnemy in _targetedEnemies)
                 {
                     Gizmos.DrawLine(transform.position, detectedEnemy.transform.position);
                 }
             }
         }
+
+        // ============================================================================================================================
+
     }
 }
 
