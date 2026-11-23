@@ -49,7 +49,11 @@ namespace GS
         private void Update()
         {
             _timerAttack += Time.deltaTime;
-            
+
+            //// Rotate toward the ennemy
+            //Quaternion targetRotation = Quaternion.LookRotation(actualTargetedEnnemy.transform.position - transform.position, Vector3.up);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.5f);
+
             // Define tower current state 
 
             switch (_currentState)
@@ -69,10 +73,6 @@ namespace GS
                     {
 
                         _currentState = TowerState.Targeting;
-
-                        // Rotate toward the ennemy
-                        //Quaternion targetRotation = Quaternion.LookRotation(actualTargetedEnnemy.transform.position - transform.position, Vector3.up);
-                        //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.5f);
                     }
 
                     else _currentState = TowerState.Idle;
