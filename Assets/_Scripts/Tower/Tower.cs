@@ -18,7 +18,7 @@ namespace GS
         [SerializeField] private TowerData _towerData;
         [SerializeField] private LayerMask _layerMask;
         
-        private TowerState _currentState = TowerState.Idle;
+        [SerializeField] private TowerState _currentState = TowerState.Idle;
         private float _timerAttack;
 
         private List<_Enemy> _allEnemies;
@@ -49,10 +49,6 @@ namespace GS
         private void Update()
         {
             _timerAttack += Time.deltaTime;
-
-            //// Rotate toward the ennemy
-            //Quaternion targetRotation = Quaternion.LookRotation(actualTargetedEnnemy.transform.position - transform.position, Vector3.up);
-            //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.5f);
 
             // Define tower current state 
 

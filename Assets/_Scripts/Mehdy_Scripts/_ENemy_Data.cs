@@ -13,9 +13,11 @@ public class _ENemy_Data : ScriptableObject
 
     [SerializeField] private float _fireRate;
 
+    [SerializeField] private int _moneyDrop;
+
     public float Speed => _speed;
     public int Damage => _damage;
     public int InitialHealth => _Initialheath;
     public float FireRate => _fireRate;
-    
+    public int MoneyDrop => _moneyDrop;
 }

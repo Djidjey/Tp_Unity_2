@@ -17,3 +17,4 @@ MonoBehaviour:
   _damage: 3
   _Initialheath: 15
   _fireRate: 1.5
+  _moneyDrop: 4

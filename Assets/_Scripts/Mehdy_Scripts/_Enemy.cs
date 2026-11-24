@@ -22,11 +22,14 @@ public class _Enemy : MonoBehaviour
 
     [SerializeField] private int UpHealth ;
     private Wave_Manager Wave_Manager;
+    private CoinCounter coinCounter;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Wave_Manager = FindAnyObjectByType<Wave_Manager>();
         _HealthBar = GetComponentInChildren<Slider>();
+        coinCounter = FindAnyObjectByType<CoinCounter>();
         Health = _EnmData.InitialHealth;
         _HealthBar.maxValue = _EnmData.InitialHealth;
         _HealthBar.value = Health;
@@ -41,7 +44,7 @@ public class _Enemy : MonoBehaviour
     }
     public void OnDeath()
     {
-        
+        coinCounter.IncreaseCoins(_EnmData.MoneyDrop);
         Destroy(gameObject);
 
     }
