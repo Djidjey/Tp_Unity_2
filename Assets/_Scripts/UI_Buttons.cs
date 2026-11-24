@@ -15,8 +15,7 @@ public class UI_Buttons : MonoBehaviour
 
     public void PlayButton()
     {
-        Time.timeScale = 1.0f;
-        MenuScreen.SetActive(false);
+        SceneManager.LoadScene(0);
     }
     public void QuitButton()
     {
@@ -59,7 +58,6 @@ public class UI_Buttons : MonoBehaviour
     void Start()
     {
         MenuScreen.SetActive(true);
-        Time.timeScale = 0.0f;
         TextOfDamage.maxVisibleCharacters = 0;
     }
 
