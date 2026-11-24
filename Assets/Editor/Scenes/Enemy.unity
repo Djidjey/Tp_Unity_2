@@ -1084,26 +1084,6 @@ MonoBehaviour:
         spawnCount: 5
     - SpawnPoints: {fileID: 0}
       enemies: []
-  - name: wave 1
-    PathWaves:
-    - SpawnPoints: {fileID: 855974079}
-      enemies:
-      - prefab: {fileID: 6422569518124272410, guid: 185b05c8f061fcc49b03a89481343b5c, type: 3}
-        spawnCount: 3
-      - prefab: {fileID: 6422569518124272410, guid: d0fc2aa20dd68bc4b81e755eec1d62b2, type: 3}
-        spawnCount: 6
-    - SpawnPoints: {fileID: 1179404423}
-      enemies:
-      - prefab: {fileID: 6422569518124272410, guid: d0fc2aa20dd68bc4b81e755eec1d62b2, type: 3}
-        spawnCount: 5
-    - SpawnPoints: {fileID: 1996089372}
-      enemies:
-      - prefab: {fileID: 6422569518124272410, guid: d0fc2aa20dd68bc4b81e755eec1d62b2, type: 3}
-        spawnCount: 5
-      - prefab: {fileID: 6422569518124272410, guid: d0fc2aa20dd68bc4b81e755eec1d62b2, type: 3}
-        spawnCount: 5
-    - SpawnPoints: {fileID: 0}
-      enemies: []
   timeBetweenWave: 0
   Time_Betweens_enemies: 1
 --- !u!1 &1179404422
