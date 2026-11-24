@@ -44,9 +44,11 @@ public class UI_Buttons : MonoBehaviour
     public void UICreateDamageText(List<float> informations)
     {
         TextMeshProUGUI damagetext = Instantiate(TextOfDamage, TextOfDamage.transform);
+        damagetext.gameObject.SetActive(true);
         damagetext.text = informations[0].ToString();
         damagetext.color = Color.red;
-        Vector3 position = new Vector3(informations[1] + TextOfDamage.transform.position.x, transform.position.y, informations[2] + TextOfDamage.transform.position.z);
+        Vector3 position = new Vector3(informations[1], transform.position.y, informations[2]);
+        damagetext.transform.position = position;
         damagetext.transform.rotation = TextOfDamage.transform.rotation;
         TimeOfSpawn[Time.time] = damagetext;
     }
@@ -56,13 +58,9 @@ public class UI_Buttons : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        List<float> info = new List<float>();
-        info.Add(50f);
-        info.Add(0);
-        info.Add(100f);
-        UICreateDamageText(info);
-        //MenuScreen.SetActive(true);
-        //Time.timeScale = 0.0f;
+        MenuScreen.SetActive(true);
+        Time.timeScale = 0.0f;
+        TextOfDamage.maxVisibleCharacters = 0;
     }
 
     // Update is called once per frame
