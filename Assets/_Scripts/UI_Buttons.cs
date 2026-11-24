@@ -44,7 +44,7 @@ public class UI_Buttons : MonoBehaviour
     public void UICreateDamageText(List<float> informations)
     {
         TextMeshProUGUI damagetext = Instantiate(TextOfDamage, TextOfDamage.transform);
-        damagetext.gameObject.SetActive(true);
+        damagetext.maxVisibleCharacters = informations[0].ToString().Length;
         damagetext.text = informations[0].ToString();
         damagetext.color = Color.red;
         Vector3 position = new Vector3(informations[1], transform.position.y, informations[2]);
