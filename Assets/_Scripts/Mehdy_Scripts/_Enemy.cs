@@ -27,6 +27,8 @@ public class _Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _Target = GameObject.FindGameObjectWithTag("M_ENM_Target");
+
         Wave_Manager = FindAnyObjectByType<Wave_Manager>();
         _HealthBar = GetComponentInChildren<Slider>();
         coinCounter = FindAnyObjectByType<CoinCounter>();
@@ -54,10 +56,14 @@ public class _Enemy : MonoBehaviour
         Vector3 TargetPos = _Target.transform.position;
         TargetPos.y = transform.position.y;
         
-        
+        Quaternion TargetRot = _Target.transform.rotation;
+        TargetRot.x = 0;
 
         transform.position = Vector3.MoveTowards(transform.position, TargetPos, _EnmData.Speed * Time.deltaTime);
-        transform.LookAt(_Target.transform);
+
+        Quaternion targetRotation = Quaternion.LookRotation(_Target.transform.position - transform.position, Vector3.up);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.1f);
+
         if (transform.position.z == TargetPos.z && transform.position.x == TargetPos.x)
         {
             OnDeath();

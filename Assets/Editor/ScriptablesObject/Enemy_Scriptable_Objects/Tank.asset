@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Tank
   m_EditorClassIdentifier: Assembly-CSharp::_ENemy_Data
   _Enemy_Name: "A\xE9rien"
-  _speed: 5
+  _speed: 0.67
   _damage: 3
-  _Initialheath: 15
+  _Initialheath: 300
   _fireRate: 1.5
+  _moneyDrop: 0
